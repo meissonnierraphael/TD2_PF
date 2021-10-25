@@ -3,6 +3,9 @@
  */
 package TD2_PF;
 
+import java.util.List;
+import java.util.Map;
+
 public class App {
     //Exercice 1
 
@@ -21,7 +24,21 @@ public class App {
     }
 
     public static void question2(){
+        List<String> list2string = List.of("a","b","c","d");
+        ToString<List<String>> l2s = list -> {
+            StringBuffer chaine = new StringBuffer();
+            boolean isPremier = true;
+            for (String e : list) {
+                if (!isPremier)
+                    chaine.append(",");
+                else
+                    isPremier = false;
+                chaine.append(e);
+            }
+            return chaine.toString();
+        };
 
+        System.out.println(l2s.conversion(list2string));
     }
 
 
