@@ -3,6 +3,9 @@
  */
 package TD2_PF;
 
+import TD2_PF.td2_universite.Annee;
+import TD2_PF.td2_universite.Etudiant;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -97,6 +100,15 @@ public class App {
 
         List<Predicate<Paire<Integer,Double>>> conditions= List.of(tailleCorrectev2);
         filtragePredicatif(conditions,maList);
+    }
+
+    //Exercice 3
+    public static void afficheSi(String entete, Predicate<Etudiant> predicate, Annee a) {
+        System.out.println(String.format("\n**%s\n", entete));
+        a.getEtudiants().forEach(e -> {
+            if (predicate.test(e))
+                System.out.println(e.getNom());
+        });
     }
 
 
