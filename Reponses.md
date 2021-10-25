@@ -2,8 +2,10 @@
 
 ###Question 3
 
-* Consumer : est une interface fonctionnelle qui prend un parametre et ne retourne aucune sortie
+* Function prend un argument (type T) et retourne une valeur. Elle convertie un type vers un autre type.
 
-* Function : est une interface fonctionnelle qui prend un argument en parametre et produit un resultat
+* Predicate prend un argument (type T) et retourne une valeur (de type boolean). Elle teste l'argument selon un critère est renvoie vrai ou faux.
 
-* Predicate : est une interface fonctionnelle qui est la representation booléenne d'un argument, elle retourne un booléen
+* Consumer prend un argument (type T) et ne retourne pas de valeur. Consomme une entrée sans rien retourner.
+
+* Supplier ne prend pas d'argument et retourne une valeur (de type T). Elle génère une sortie.
