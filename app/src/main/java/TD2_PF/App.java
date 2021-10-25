@@ -4,11 +4,25 @@
 package TD2_PF;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
+    //Exercice 1
+
+    //Question 1
+    public static void question1(){
+        Somme<Integer> integerSomme = (x,y) -> x+y;
+        Somme<Long> longSomme = (x,y) -> x+y;
+        Somme<Double> doubleSomme = (x,y) -> x+y;
+        Somme<String> stringSomme = (x,y) -> x+y;
+
+        System.out.println(integerSomme.somme(1,2));
+        System.out.println(longSomme.somme(1L,2L));
+        System.out.println(doubleSomme.somme(1.5,2.10));
+        System.out.println(stringSomme.somme("to","to"));
+
     }
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+    public static void question2(){
+
     }
+
+
 }
