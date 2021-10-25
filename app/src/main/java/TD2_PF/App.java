@@ -5,6 +5,7 @@ package TD2_PF;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 public class App {
     //Exercice 1
@@ -23,8 +24,8 @@ public class App {
 
     }
 
-    public static void question2(){
-        List<String> list2string = List.of("a","b","c","d");
+    public static void question2() {
+        List<String> list2string = List.of("a", "b", "c", "d");
         ToString<List<String>> l2s = list -> {
             StringBuffer chaine = new StringBuffer();
             boolean isPremier = true;
@@ -39,6 +40,19 @@ public class App {
         };
 
         System.out.println(l2s.conversion(list2string));
+    }
+
+    //Exercice 2
+
+    public static void question2_1(){
+        Predicate<Integer> tropPetit = x -> x<100;
+        Predicate<Integer> tropGrand = x -> x>200;
+        Predicate<Integer> mauvaiseTaille = tropPetit.or(tropGrand);
+        Predicate<Integer> tailleCorrecte = mauvaiseTaille.negate();
+        Predicate<Double> tropLourd = x -> x>150.0;
+        Predicate<Double> poidsCorrect = tropLourd.negate();
+        Predicate<Paire<Integer,Double>> autorise = x -> tailleCorrecte.test(x.fst) && poidsCorrect.test(x.snd);
+
     }
 
 
