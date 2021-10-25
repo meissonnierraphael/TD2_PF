@@ -3,6 +3,7 @@
  */
 package TD2_PF;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
@@ -53,6 +54,49 @@ public class App {
         Predicate<Double> poidsCorrect = tropLourd.negate();
         Predicate<Paire<Integer,Double>> autorise = x -> tailleCorrecte.test(x.fst) && poidsCorrect.test(x.snd);
 
+    }
+
+    public static <T> List<T> filtragePredicatif(List<Predicate<T>> predicats, List<T> list){
+        List<T> res = new ArrayList<T>();
+        Predicate<T> predicate = x -> true;
+        for(Predicate<T> i : predicats){
+            predicate = predicate.and(i);
+        }
+        for(T elt : list){
+            if(predicate.test(elt)){
+                res.add(elt);
+            }
+        }
+
+        return res;
+    }
+
+    public static void question2_2(){
+        Predicate<Integer> tropPetit = x -> x<100;
+        Predicate<Integer> tropGrand = x -> x>200;
+        Predicate<Integer> mauvaiseTaille = tropPetit.or(tropGrand);
+        Predicate<Integer> tailleCorrecte = mauvaiseTaille.negate();
+        Predicate<Double> tropLourd = x -> x>150.0;
+        Predicate<Double> poidsCorrect = tropLourd.negate();
+        Predicate<Paire<Integer,Double>> autorise = x -> tailleCorrecte.test(x.fst) && poidsCorrect.test(x.snd);
+
+        Predicate<Paire<Integer,Double>> tropPetitv2 = x -> x.fst<100;
+        Predicate<Paire<Integer,Double>> tropGrandv2 = x -> x.fst>200;
+        Predicate<Paire<Integer,Double>> mauvaiseTaillev2 = tropPetitv2.or(tropGrandv2);
+        Predicate<Paire<Integer,Double>> tailleCorrectev2 = mauvaiseTaillev2.negate();
+        Predicate<Paire<Integer,Double>> tropLourdv2 = x -> x.snd>150.0;
+        Predicate<Paire<Integer,Double>> poidsCorrectev2 = tropLourdv2.negate();
+        Predicate<Paire<Integer,Double>> autorisev2 = tailleCorrectev2.and(poidsCorrectev2);
+
+        List<Paire<Integer,Double>> maList = List.of(
+                new Paire<Integer,Double>(1,50.0),
+                new Paire<Integer, Double>(201,40.5),
+                new Paire<Integer, Double>(180,180.0),
+                new Paire<Integer, Double>(160, 300.0)
+        );
+
+        List<Predicate<Paire<Integer,Double>>> conditions= List.of(tailleCorrectev2);
+        filtragePredicatif(conditions,maList);
     }
 
 
